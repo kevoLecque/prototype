@@ -1,0 +1,231 @@
+header,
+main,
+aside,
+footer {
+    display: grid;
+    grid-template-columns: auto auto 30%;
+}
+
+header {
+    grid-template-rows: 10rem auto;
+    align-items: center;
+    padding: 3rem 3rem 0 3rem;
+    hgroup {
+        grid-column: 1/4;
+    }
+    nav {
+        grid-column: 1/3;
+    }
+    span {
+        text-align: right;
+    }
+    h2 {
+        display: none;
+    }
+    nav {
+        ul {
+            @extend %ul-normalize;
+            li {
+                margin: 0 .5rem 0 0;
+            }
+        }
+    }
+}
+
+main {
+    grid-template-rows: auto;
+    grid-gap: 0 2rem;
+    align-items: center;
+    section#One {
+        grid-column: 1/3;
+    }
+    section#Two {
+        grid-column: 1/4;
+    }
+}
+
+aside {
+    grid-template-rows: auto;
+    // place-items = <align-items> / <justify-items>
+    place-items: center;
+    background-color: $darker-color-branding;
+}
+
+footer {
+    grid-template-rows: auto;
+    background-color: $color-txt;
+    color: $color-txt-negative;
+    small {
+        grid-column: 1/4;
+    }
+}
+
+//Objetos
+ul {
+    &#team {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        @extend %ul-normalize;
+    }
+}
+
+@mixin obj-simple {
+    li {
+        span {
+            display: block;
+            background-color: $background-obj;
+        }
+    }
+}
+
+
+/*
+Media Query > 992px
+*/
+
+@media(min-width: 992px) {
+    h1 {
+        height: 6rem;
+    }
+    main,
+    aside,
+    footer {
+        @include paddingx2($padding);
+    }
+    hr {
+        margin: 0 6rem;
+    }
+    header {
+        padding: 6rem 6rem 0 6rem;
+        nav {
+            ul {
+                display: flex;
+                flex-flow: row wrap;
+            }
+        }
+    }
+    aside {
+        span {
+            grid-column: 1/4;
+        }
+    }
+    //Data obj circle
+    $s-obj:14rem;
+    $border-obj:8px;
+    $border-radius:7rem;
+    $padding-obj:.5rem;
+    ul {
+        &#team {
+            @include obj-circle($s-obj, $border-obj, $border-radius, $padding-obj);
+        }
+    }
+}
+
+
+/*
+Media Query < 992px
+*/
+
+@media(max-width: 992px) {
+    h1 {
+        height: 4rem;
+    }
+    main,
+    aside,
+    footer {
+        @include padding($padding);
+    }
+    header {
+        nav {
+            ul {
+                display: flex;
+                flex-flow: row wrap;
+            }
+        }
+    }
+    aside {
+        span {
+            grid-column: 1/4;
+        }
+    }
+    //Data obj circle
+    $s-obj:10rem;
+    $border-obj:7px;
+    $border-radius:7rem;
+    $padding-obj:.5rem;
+    ul {
+        &#team {
+            @include obj-circle($s-obj, $border-obj, $border-radius, $padding-obj);
+        }
+    }
+}
+
+
+/*
+Media Query < 600px
+*/
+
+@media(max-width: 600px) {
+    h1 {
+        height: 3.5rem;
+    }
+    main,
+    aside,
+    footer {
+        @include padding($padding);
+    }
+    header {
+        grid-template-rows: 6rem auto;
+        nav {
+            grid-column: 1/4;
+        }
+        span {
+            display: none;
+        }
+        nav {
+            ul {
+                display: flex;
+                flex-flow: column wrap;
+                li {
+                    background-color: $darker-color-link;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    main {
+        @include grid(3);
+        grid-template-rows: auto;
+        h2 {
+            text-align: center;
+        }
+        section#One {
+            grid-column: 1/4;
+            grid-row: 2/4;
+        }
+        span {
+            grid-column: 1/4;
+        }
+        section#Two {
+            grid-column: 1/4;
+        }
+    }
+    aside {
+        @include grid(3);
+        padding: 3rem;
+        span {
+            grid-column: 1/4;
+        }
+    }
+    //Data obj circle
+    $s-obj:12rem;
+    $border-obj:7px;
+    $border-radius:7rem;
+    $padding-obj:.5rem;
+    ul {
+        &#team {
+            @include obj-circle($s-obj, $border-obj, $border-radius, $padding-obj);
+        }
+    }
+}

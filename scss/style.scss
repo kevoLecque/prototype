@@ -1,0 +1,157 @@
+@import "components/mixins";
+
+/*
+Corporative colors
+*/
+
+$color-branding: hsl(350, 99%, 38%);
+$darker-color-branding: hsl(350, 99%, 25%);
+$color-txt: hsl(350, 0, 90%);
+$color-txt-negative: hsl(350, 0, 10%);
+
+/*
+Link Corporative Colors
+*/
+
+$color-link: hsl(65, 99%, 40%);
+$darker-color-link: hsl(65, 99%, 30%);
+$lighter-color-link: hsl(65, 99%, 70%);
+
+/*
+General var
+*/
+
+$padding: 3rem;
+
+/* 
+Normalize styles 
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 100%;
+    font-weight: inherit;
+    transition: all 1s;
+    vertical-align: baseline;
+}
+
+
+/* 
+font styles 
+*/
+
+@font-face {
+    font-family: "Myfont";
+    font-style: normal;
+    font-weight: 100;
+    src: url("../font/GOTHIC.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "MyfontB";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../font/GOTHICB.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "Myfonti";
+    font-style: italic;
+    font-weight: 400;
+    src: url("../font/GOTHICI.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "Myfontbi";
+    font-style: italic;
+    font-weight: 700;
+    src: url("../font/GOTHICBI.TTF") format("truetype");
+}
+
+
+/* 
+extends 
+*/
+
+%bold {
+    font-family: Myfontb, sans-serif;
+}
+
+%italic {
+    font-family: Myfonti, sans-serif;
+}
+
+%small {
+    font-size: 75%;
+}
+
+%ul-normalize {
+    list-style: none;
+    padding: 0;
+}
+
+
+/* 
+tunning styles
+*/
+
+strong,
+h1,
+h2 {
+    @extend %bold;
+}
+
+small,
+figcaption {
+    @extend %small;
+}
+
+i {
+    @extend %italic;
+}
+
+ul {
+    padding: 0 0 1.5rem 3rem;
+}
+
+hr {
+    border-top: 1px solid $color-txt;
+    margin: 0 3rem;
+    height: 0;
+}
+
+h1 {
+    font-size: 2.3rem;
+    background-image: url(../svg/logotipo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    span {
+        display: none;
+    }
+}
+
+h2 {
+    font-size: 1.7rem;
+    padding: 0 0 1.5rem 0;
+    text-transform: uppercase;
+}
+
+p {
+    padding: 0 0 1.3rem 0;
+    line-height: 1.3rem;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: Myfont, sans-serif;
+    background-color: $color-branding;
+    color: $color-txt;
+    @include link($color-link,
+    $darker-color-link);
+}
+
+@import "components/nesting";

@@ -1,0 +1,57 @@
+// mixin enlace
+@mixin link($a, $b) {
+    a {
+        color: $a;
+        text-decoration: none;
+        outline: 0;
+        &:hover {
+            color: $b;
+        }
+    }
+}
+
+//mixin obj circle
+@mixin obj-circle($s-obj, $border-obj, $border-radius, $padding-obj) {
+    li {
+        width: $s-obj;
+        height: auto;
+        figure {
+            span {
+                width: $s-obj;
+                height: $s-obj;
+                border-radius: $border-radius;
+                border: $border-obj solid hsla(350, 0, 100%, .5);
+                overflow: hidden;
+                display: block;
+                img {
+                    border-radius: $border-radius;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    padding: $padding-obj;
+                }
+            }
+            figcaption {
+                text-align: center;
+                strong {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+//
+@mixin grid($col) {
+    display: grid;
+    grid-template-columns: repeat($col, auto);
+}
+
+// mixin padding
+@mixin padding($padding) {
+    padding: $padding;
+}
+
+@mixin paddingx2($padding) {
+    padding: $padding*2;
+}
